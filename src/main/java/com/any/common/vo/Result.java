@@ -13,7 +13,6 @@ public class Result<T> {
     private String message;
     private T data;
 
-
     /**
      *
      * @param <T>
@@ -46,7 +45,6 @@ public class Result<T> {
     public static <T> Result<T> success(String message, T data){
         return new Result<>(20000, message, data);
     }
-
 
     /**
      *

@@ -2,4 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.any.sys.mapper.MenuMapper">
 
+    <select id="getMenuListByUserId"  resultType="com.any.sys.entity.Menu">
+        SELECT
+            distinct a.*
+        FROM x_menu a
+            JOIN x_role_menu b
+            JOIN x_user_role c
+            ON a.`menu_id` = b.`menu_id`
+        WHERE b.`role_id` = c.`role_id`
+            AND c.`user_id` = #{userId}
+            AND a.`parent_id` = #{pid}
+            ORDER BY a.`menu_id`;
+    </select>
+
 </mapper>
